@@ -7,7 +7,8 @@ import cohere
 
 load_dotenv()
 #setup the cohere client
-co=cohere.ClientV2(os.getenv("COHERE_API_KEY"))
+api_key=st.secrets.get("COHERE_API_KEY", os.getenv("COHERE_API_KEY"))
+co=cohere.ClientV2(api_key)
 
 def generate_idea(industry, temperature):
     prompt=f"""
